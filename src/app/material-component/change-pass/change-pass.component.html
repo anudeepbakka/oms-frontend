@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">change mPassword</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="changepasswoedform">
+        <div fxFlex fxLayout="column">
+            
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Old Password</mat-label>
+                <input  matInput formControlName="oldpass" required>
+                <mat-error *ngIf="changepasswoedform.controls.oldpass.touched && changepasswoedform.controls.oldpass.invalid">
+                    <span *ngIf="changepasswoedform.controls.oldpass.errors.required">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>New Password</mat-label>
+                <input type="password"  matInput formControlName="newpass" required>
+                <mat-error *ngIf="changepasswoedform.controls.newpass.touched && changepasswoedform.controls.newpass.invalid">
+                    <span *ngIf="changepasswoedform.controls.newpass.errors.required">This field is mandatory.</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Confirm Password</mat-label>
+                <input type="password"  matInput formControlName="confirmPass" required>
+                <mat-error *ngIf="changepasswoedform.controls.confirmPass.touched && changepasswoedform.controls.confirmPass.invalid">
+                    <span *ngIf="changepasswoedform.controls.confirmPass.errors.required">This field is mandatory.</span>
+                </mat-error>
+                <mat-hint *ngIf="!(changepasswoedform.valid && changepasswoedform.dirty) && validateSubmit()">
+                    <span>New password and confirm password does not match</span>
+                </mat-hint>
+            </mat-form-field>
+            
+        </div>
+    </form>
+</mat-dialog-content>
+`
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="handlechangePassSubmit()"
+    [disabled]="(!(changepasswoedform.valid && changepasswoedform.dirty))">Change Password</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>

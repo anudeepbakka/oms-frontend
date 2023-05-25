@@ -1,0 +1,19 @@
+
+    <!-- <a *ngIf="timer">Countdown: {{ countdown }}</a>
+    <a *ngIf="!timer">logging off...</a> -->
+
+
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5">
+    <mat-icon>account_circle</mat-icon>
+</button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+    <button mat-menu-item (click)="changePassword()">
+        <mat-icon>password</mat-icon>Change password
+    </button>
+    <button mat-menu-item (click)="signupAction()">
+        <mat-icon>person_add_alt_1</mat-icon>Create User
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>Sign Out
+    </button>
+</mat-menu>
